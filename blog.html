@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy-Math</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.5.1/math.js" integrity="sha512-gIaHF8pKynuRYPvDDLkS6Gj6dS+tpE4khy3CwBIwyKxK3rOJ+LXFGM97BoZh5xtGnGSIky6TJqxfAZcGA8DN3Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <script>
+        MathJax = {
+          loader: {load: ['input/asciimath', 'output/chtml']}
+        }
+        </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+    
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script> -->
+</head>
+<body>
+    <section style="margin-top: 0;">
+       <nav style="z-index: 2; margin-top: 0px;" class= " fixed  nav bg-slate-800 text-3xl h-8 font-sans">
+        <img src="logo.jpeg" alt="">
+        <ul class="mx-4">
+            <li class="page text-xs cursor-pointer text-slate-200 my-2 mx-2">Content</li>
+            <li class="page calculator text-xs cursor-pointer text-slate-200 my-2 mx-2">Calculators</li>
+            <li class="page text-xs cursor-pointer text-slate-200 my-2 mx-2">Services</li>
+            <li class="page blogs text-xs cursor-pointer text-slate-200 my-2 mx-2">Blogs</li>
+
+            <li class="page text-xs cursor-pointer text-slate-200 my-2 mx-2">Quiz</li>
+            <li class="page text-xs cursor-pointer text-slate-200 my-2 mx-2">About</li>
+
+            
+            
+        </ul>
+         
+        <label class="switch">
+            <input class="toggle" type="checkbox">
+            <span class="slider round"></span>
+          </label>
+        <span class=" text-xs text-slate-200 my-2 mx-2 ml-96 gap-5 flex">
+            <li style="position: absolute;" class="mx-2 signin cursor-pointer">sign in</li>
+            <li style="position: absolute;" class=" signup cursor-pointer mx-16">sign up</li>
+        </span>
+
+        <input style="height: 22px; text-align: center; border-radius: 2px;position: relative; margin-left: 10vw; " class="my-1.5 mr- w-36 text-xs" type="search" placeholder="search here">
+        <button  style="color: white; border-radius: 2px" class=" btn my-1.5 mx-2 w-12 border-spacing-1  bg-emerald-700 text-xs">Search</button>
+       </nav>
+
+       
+
+        
+    </section>
+
+    
+    
+        
+
+            <div style="position: absolute; margin-top: 40px;margin-left: 36vw; z-index: 10; background-color: beige; border-radius: 10px;" class="loginout"></div>
+
+    <section class="section2 grid-cols-3 flex flex-wrap absolute my-14">
+
+        <div style="display:none ;" class="question mx-96 ">
+
+           <span class="flex my-4"> factorise: `(x^2-1)`</span>
+
+            <span style=" border-radius: 4px; width: 250px;"
+             class="option1 flex my-4 border-spacing-1  "><input onclick="option1()" class="mr-4" type="radio">` a.  (x-1)(x+1)`</span>
+
+             <span style="border-radius: 4px; width: 250px;" class=" option2 flex my-4 border-spacing-1 "><input onclick="option2()" class="mr-4" type="radio">` b.  (x^2-1)x`</span>
+
+            <span style="border-radius: 4px; width: 250px;" class=" option3 flex my-4 border-spacing-1 "><input onclick="option3()" class="mr-4" type="radio"> `c.  x^2(1-1/x^2)`</span>
+        </div>
+
+        <div style="display:flex ; flex-direction: column;" class="blog1 mx-72 w-auto">
+
+            <h1 class="my-4">AM-GM inequality</h1>
+        
+            <img style="opacity:0.5 ; border-radius: 8px;" src="data:image/png;base64,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" alt="">
+        
+            <p>
+                the inequality is given as 
+        
+                `(a+b)/2>=sqrt(ab)` 
+                
+                <h3>PROOF:-</h3>
+                
+                <br>
+                and the proof can be given as 
+        
+                `(sqrt(a)-sqrt(b))^2>=0`
+        
+                thus on expanding 
+        
+               ` a+b-2sqrt(ab)>=0` <br>
+        
+                and thus
+        
+                `(a+b)/2>=sqrt(ab)`
+        
+        
+        
+        
+        
+        
+        
+            </p>
+
+            <a href="./main.html"><button>GO BACK</button></a>
+        
+        </div>
+
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates earum dolorem modi quasi illum quaerat nam possimus totam impedit ab, accusantium, necessitatibus placeat officiis? Maiores iure minus illo sit id voluptas corrupti assumenda eum ullam omnis aliquam at atque, illum ab fugiat porro hic sequi? Dicta, maiores. Veniam soluta totam, harum beatae impedit illum vel nisi iste dicta ad saepe ea laudantium aut libero ipsum! Neque nam tempore quo, in, voluptatibus ab assumenda tenetur quis molestias consectetur laudantium id. Sed voluptates eos omnis temporibus officia aspernatur, doloremque iure reprehenderit, nihil reiciendis possimus cumque itaque eligendi suscipit et officiis sapiente quibusdam aliquid tenetur praesentium voluptatum maxime quidem earum quas. Eveniet, voluptates. Consequatur asperiores earum culpa incidunt. Repudiandae voluptatibus possimus repellat quo nemo ea debitis praesentium dolores at accusamus aliquam modi voluptates quod aperiam nam iure atque, doloremque consectetur natus hic. Officiis iusto alias possimus, neque aliquid ex aut at adipisci unde eveniet tempore, maiores, voluptatem recusandae. Doloremque dolores quod omnis architecto, officia similique. Eum, pariatur laboriosam. Quibusdam, consequatur et, in sed repellendus tempora sunt eveniet nulla expedita quo assumenda aliquid, veritatis repellat hic. Sint, dolorum totam accusantium quibusdam neque, quidem porro magnam sed distinctio animi delectus, qui excepturi! Nemo ab, alias provident quo vitae quod nulla ea sapiente aperiam explicabo, veniam cum et exercitationem! Ducimus harum nulla soluta rerum obcaecati! Amet iure, est exercitationem cupiditate eligendi beatae porro neque earum consequuntur repellendus. Rerum fugiat soluta fugit magni itaque porro autem dolor pariatur totam iste ipsum, eos ipsam facere. Voluptate amet pariatur dolorem molestiae aperiam nihil dolores quod iusto quia corporis veritatis labore quae doloribus fugit harum sequi nisi, repudiandae, vitae aspernatur, hic ipsam vero cumque consequuntur. Eveniet blanditiis, fugit quaerat unde quae quisquam. Quasi iure, nesciunt maiores, deleniti neque molestias architecto nemo ipsam molestiae nostrum facere perferendis? Natus quis totam quo a sint atque, perferendis repellat voluptatem id iusto similique voluptatum. Distinctio asperiores dolorum nisi reiciendis est, blanditiis eius tenetur exercitationem incidunt reprehenderit illo vero, quaerat corrupti ullam, quod provident. Velit, repellat quos officiis quas quasi, doloremque facere nisi fugit numquam dolor vitae asperiores est in non tempore nemo amet, animi nesciunt minima provident neque tenetur aliquam ex officia? Optio maxime iste perspiciatis corrupti laboriosam architecto ducimus fugiat non rerum magnam in sequi laborum, molestiae modi saepe. Totam dolor animi maiores minus quibusdam sint beatae ipsa culpa fugit quis, dignissimos ad rerum nemo libero eius officiis excepturi odit, numquam alias voluptate.</p>
+
+        
+
+        
+    </section>
+
+     
+        
+    </section>
+     
+     
+    
+    
+    
+    
+    <script src="main.js"></script>
+</body>
+</html>
+

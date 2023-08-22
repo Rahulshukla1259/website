@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="height: 30px;width: 30px;background-color: blue;" class="box"></div>
+</body>
+
+<div style="height: 30px;width: 30px;background-color: rgb(235, 19, 120);" class="box1"></div>
+</body>
+
+<style>
+    body{
+
+        height: 100vh;
+
+        width: 100vw;
+    }
+</style>
+<script>
+
+    // document.body.addEventListener("click",()=>{
+
+    //     console.log("first")
+    // })
+
+    let a=1;
+    let b=1;
+    document.body.addEventListener("keypress",(e)=>{
+
+        console.log(window.innerWidth)
+      
+        if(e.key=="d"){
+         
+            if(a<300){
+        
+
+          a=a+1
+            document.querySelector(".box").style.marginLeft=`${a}px`;
+        }else{
+          while(a>0){
+            a=a-1;
+            document.querySelector(".box").style.marginLeft=`${a}px`;
+          }
+        }}
+           
+        if(e.key=="x"){
+         
+         if(b<300){
+     
+
+       b=b+1
+         document.querySelector(".box").style.marginTop=`${b}px`;
+     }else{
+       while(b>0){
+         b=b-1;
+         document.querySelector(".box").style.marginTop=`${b}px`;
+       }
+     }}
+    })
+</script>
+</html>

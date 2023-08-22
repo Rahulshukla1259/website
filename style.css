@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+
+    background: linear-gradient(#D2D2CF,rgb(227, 190, 171),#D2D2CF);
+    height: 100vh;
+    width: 100vw;
+    /* overflow: hidden; */
+    overflow-x: hidden;
+
+   background-repeat: repeat;
+
+}
+
+*{
+
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+}
+
+body{
+
+  margin-top: 0px;
+}
+
+li{
+
+    list-style: none;
+}
+
+nav{
+    display: flex;
+    width: 100vw;
+    /* background-color: rgb(3, 87, 90);
+    color: rgb(241, 82, 127); */
+}
+
+ul{
+    display: flex; 
+}
+
+.background{
+    color: rgb(65, 230, 230);
+    border-radius: 2px;
+    font-size: small;
+    position: relative;
+}
+
+.btn:hover{
+
+    background-color: darkcyan;
+    transform: scale(1.1);
+
+}
+
+.switch {
+    margin-top: 6px;
+    position: absolute;
+    display: inline-block;
+    width: 44px;
+    height: 20px;
+
+    margin-left: 500px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 15px;
+    width: 15px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+  .bodyback{
+
+    background:linear-gradient(rgb(27, 34, 60),rgb(44, 29, 20),rgb(25, 39, 51));
+
+    color: antiquewhite;
+  }
+
+  .togglecolor{
+
+    color: bisque;
+  }
+
+  
